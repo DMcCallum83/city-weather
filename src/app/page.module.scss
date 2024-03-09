@@ -1,0 +1,15 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2rem;
+}
+
+.description {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.85rem;
+  width: 100%;
+}
