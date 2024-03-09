@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import styles from "./SearchBar.module.css";
 import { SearchResult } from "./_shared";
-import { SearchResult, SearchResultItem } from "../SearchResult";
+import { SearchResultItem } from "../SearchResult";
 
 export function SearchBar() {
   const [searchValue, setSearchValue] = useState<string>("");
