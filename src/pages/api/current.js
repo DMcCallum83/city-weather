@@ -2,9 +2,9 @@ import fetch from 'node-fetch';
 
 export default async function handler(req, res) {
     const { query } = req.query;
-    const searchUrl = process.env.BASE_SEARCH_URL;
+    const currentUrl = process.env.BASE_CITY_URL;
     const apiKey = process.env.API_KEY;
-    const fetchUrl = `${searchUrl}key=${apiKey}&query=${encodeURIComponent(query)}`
+    const fetchUrl = `${currentUrl}key=${apiKey}&query=id:${encodeURIComponent(query)}`
   
     try {
       const apiResponse = await fetch(fetchUrl);

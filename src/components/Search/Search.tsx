@@ -1,14 +1,20 @@
 "use client";
 import { useEffect, useState } from "react";
-import styles from "./SearchBar.module.css";
+import styles from "./Search.module.scss";
 import { SearchResult } from "./_shared";
-import { SearchResultItem } from "../SearchResult";
+import { SearchResultItem } from "./SearchResultItem";
+import { LoadingSpinner } from "../LoadingSpinner";
 
-export function SearchBar() {
+interface SearchProps {
+  onSelect: (id: number | null) => void;
+}
+
+export function Search({ onSelect }: SearchProps) {
   const [searchValue, setSearchValue] = useState<string>("");
   const [searchResults, setSearchResults] = useState<SearchResult[] | null>(
     null
   );
+  const [isFetching, setIsFetching] = useState(false);
   const [fetchError, setFetchError] = useState<boolean>(false);
 
   useEffect(() => {
@@ -19,7 +25,6 @@ export function SearchBar() {
         );
         const data = await searchResponse.json();
         if (!!data.error) {
-          console.log("Error");
           setFetchError(true);
         }
 
@@ -31,8 +36,8 @@ export function SearchBar() {
             country: city.country,
           } as SearchResult;
         });
+        setIsFetching(false);
         setSearchResults(results);
-        console.log(data);
       } catch {
         // handled by state
       }
@@ -40,6 +45,7 @@ export function SearchBar() {
 
     const debounceTimer = setTimeout(() => {
       if (searchValue.trim() !== "") {
+        setIsFetching(true);
         searchData();
       }
     }, 300);
@@ -51,9 +57,15 @@ export function SearchBar() {
     const searchValue = event.target.value;
     setSearchValue(searchValue);
     setSearchResults(null);
+    onSelect(null);
     if (fetchError) {
       setFetchError(false);
     }
+  };
+
+  const handleOnSelect = (id: number) => {
+    setSearchResults(null);
+    onSelect(id);
   };
 
   return (
@@ -67,16 +79,20 @@ export function SearchBar() {
       {fetchError && (
         <p className={styles.error}>There was a problem with that request.</p>
       )}
-      {!!searchResults?.length &&
-        searchResults.map((city) => (
-          <SearchResultItem
-            key={city.id}
-            id={city.id}
-            name={city.name}
-            region={city.region}
-            country={city.country}
-          />
-        ))}
+      {!!searchResults ? (
+        <>
+          <span className={styles.count}>{searchResults.length} results</span>
+          {searchResults.map((city) => (
+            <SearchResultItem
+              key={city.id}
+              city={city}
+              onSelect={(id) => handleOnSelect(id)}
+            />
+          ))}
+        </>
+      ) : isFetching ? (
+        <LoadingSpinner />
+      ) : null}
     </>
   );
 }
