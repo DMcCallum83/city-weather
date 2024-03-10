@@ -16,7 +16,7 @@ export function convertToAMPM(dateTimeString: string) {
     const period = hours < 12 ? 'AM' : 'PM';
   
     // Construct the final formatted string
-    const formattedTimeString = `${formattedHours}.${formattedMinutes}${period}`;
+    const formattedTimeString = `${formattedHours}.${formattedMinutes} ${period}`;
   
     return formattedTimeString;
   }

@@ -81,7 +81,10 @@ export function Search({ onSelect }: SearchProps) {
       )}
       {!!searchResults ? (
         <>
-          <span className={styles.count}>{searchResults.length} results</span>
+          <span className={styles.count}>
+            {searchResults.length}{" "}
+            {searchResults.length === 1 ? "result" : "results"}
+          </span>
           {searchResults.map((city) => (
             <SearchResultItem
               key={city.id}
