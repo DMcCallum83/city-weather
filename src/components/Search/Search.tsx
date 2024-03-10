@@ -69,9 +69,9 @@ export function Search({ onSelect }: SearchProps) {
   };
 
   return (
-    <>
+    <section className={styles.search}>
       <input
-        className={styles.search}
+        className={styles.input}
         placeholder="Enter a city name to see results..."
         value={searchValue}
         onChange={(event) => handleInputChange(event)}
@@ -96,6 +96,6 @@ export function Search({ onSelect }: SearchProps) {
       ) : isFetching ? (
         <LoadingSpinner />
       ) : null}
-    </>
+    </section>
   );
 }
