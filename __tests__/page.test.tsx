@@ -3,13 +3,13 @@ import { render, screen } from "@testing-library/react";
 import Home from "../src/app/page";
 
 describe("Page", () => {
-  it("renders an input", () => {
+  it("renders the description text", () => {
     render(<Home />);
 
-    const input = screen.getByPlaceholderText(
-      "Enter a city name to see results..."
+    const text = screen.getByText(
+      "Use the search box below to find cities around the world, and display the current weather."
     );
 
-    expect(input).toBeInTheDocument();
+    expect(text).toBeInTheDocument();
   });
 });

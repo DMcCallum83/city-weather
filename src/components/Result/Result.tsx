@@ -52,7 +52,9 @@ export function Result({ cityId }: ResultProps) {
     }
   });
 
-  return cityResult ? (
+  return fetchError ? (
+    <p className={styles.error}>There was a problem with that request.</p>
+  ) : cityResult ? (
     <section className={styles.result}>
       <div className={styles.layout}>
         {!!cityResult.name && cityResult.name !== "null" && (

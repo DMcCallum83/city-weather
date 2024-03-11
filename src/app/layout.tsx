@@ -4,6 +4,7 @@ import sun from "../../public/sun.svg";
 import Image from "next/image";
 import styles from "./layout.module.scss";
 import "./globals.css";
+import { Header } from "@/components/Header/Header";
 
 const inter = Inter({ subsets: ["latin"], weight: "600" });
 
@@ -21,10 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header className={styles.header}>
-          <h3>City Weather</h3>
-          <Image priority src={sun} width="50" alt="City Weather Logo" />
-        </header>
+        <Header />
         {children}
       </body>
     </html>
