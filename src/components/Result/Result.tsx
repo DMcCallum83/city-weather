@@ -70,8 +70,8 @@ export function Result({ cityId }: ResultProps) {
             <Image
               src={`https:${cityResult.conditionIcon}`}
               alt={`${cityResult.condition} Icon`}
-              width={50}
-              height={50}
+              width={75}
+              height={75}
             />
           </div>
         </div>
