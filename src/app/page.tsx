@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./page.module.scss";
 import { Search } from "@/components/Search/Search";
 import { Result } from "@/components/Result/Result";

@@ -7,7 +7,6 @@ export interface SearchResult {
 
   export interface CityResult {
     name: string;
-    region: string;
     country: string;
     localtime: string;
     tempC: string;
@@ -17,6 +16,7 @@ export interface SearchResult {
     windMph: string;
     windKph: string;
     windDirection: string;
+    windDegrees: string;
     condition: string;
     conditionIcon: string;
   }

@@ -26,7 +26,6 @@ export function Result({ cityId }: ResultProps) {
 
         const result = {
           name: data.location.name,
-          region: data.location.region,
           country: data.location.country,
           localtime: data.location.localtime,
           tempC: data.current["temp_c"],
@@ -36,6 +35,7 @@ export function Result({ cityId }: ResultProps) {
           windMph: data.current["wind_mph"],
           windKph: data.current["wind_kph"],
           windDirection: data.current["wind_dir"],
+          windDegrees: data.current["wind_degree"],
           condition: data.current.condition.text,
           conditionIcon: data.current.condition.icon,
         } as CityResult;
@@ -54,48 +54,49 @@ export function Result({ cityId }: ResultProps) {
 
   return cityResult ? (
     <section className={styles.result}>
-      {!!cityResult.name && cityResult.name !== "null" && (
-        <div>
-          <span>{cityResult.name}</span>
+      <div className={styles.layout}>
+        {!!cityResult.name && cityResult.name !== "null" && (
+          <div className={styles.location}>
+            <span className={styles.textLarge}>{cityResult.name}</span>
+            <span className={styles.textSmall}>{cityResult.country}</span>
+            <span>{convertToAMPM(cityResult.localtime)} (local)</span>
+          </div>
+        )}
+        <div className={styles.condition}>
+          <div className={styles.conditionLayout}>
+            <span>{cityResult.condition} </span>
+            <Image
+              src={`https:${cityResult.conditionIcon}`}
+              alt={`${cityResult.condition} Icon`}
+              width={50}
+              height={50}
+            />
+          </div>
         </div>
-      )}
-      {!!cityResult.region && (
-        <div>
-          <span>{cityResult.region}</span>
+        <div className={styles.temp}>
+          <h2 className={styles.heading}>Temperature</h2>
+          <div className={styles.tempLayout}>
+            <span className={styles.textLarge}>
+              {cityResult.tempC}&deg;C ({cityResult.tempF}&deg;F)
+            </span>
+            <span className={styles.textSmall}>
+              (feels like {cityResult.feelsLikeC}&deg;C /{" "}
+              {cityResult.feelsLikeF}
+              &deg;F)
+            </span>
+          </div>
         </div>
-      )}
-      <div>
-        <span>{cityResult.country}</span>
-      </div>
-      <div>
-        <span>{convertToAMPM(cityResult.localtime)}</span>
-      </div>
-      <div>
-        <span>
-          {cityResult.tempC}&deg;C (Feels like {cityResult.feelsLikeC}&deg;C)
-        </span>
-      </div>
-      <div>
-        <span>
-          {cityResult.tempF}&deg;F (Feels like {cityResult.feelsLikeF}&deg;F)
-        </span>
-      </div>
-      <div>
-        <span>
-          {cityResult.windMph}mph ({cityResult.windKph}kph)
-        </span>
-      </div>
-      <div>
-        <span>{cityResult.windDirection}</span>
-      </div>
-      <div>
-        <span>{cityResult.condition} </span>
-        <Image
-          src={`https:${cityResult.conditionIcon}`}
-          alt={`${cityResult.condition} Icon`}
-          width={50}
-          height={50}
-        />
+        <div className={styles.wind}>
+          <h2 className={styles.heading}>Wind</h2>
+          <div className={styles.windLayout}>
+            <span className={styles.textLarge}>
+              {cityResult.windMph}mph ({cityResult.windKph}kph)
+            </span>
+            <span className={styles.textSmall}>
+              {cityResult.windDirection} ({cityResult.windDegrees}&deg;)
+            </span>
+          </div>
+        </div>
       </div>
     </section>
   ) : (

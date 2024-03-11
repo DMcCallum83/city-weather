@@ -75,6 +75,7 @@ export function Search({ onSelect }: SearchProps) {
         placeholder="Enter a city name to see results..."
         value={searchValue}
         onChange={(event) => handleInputChange(event)}
+        autoFocus
       />
       {fetchError && (
         <p className={styles.error}>There was a problem with that request.</p>
