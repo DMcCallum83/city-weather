@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## City Weather
 
-![App demo](image.png)
+![App demo](app-demo.png)
 
 This is a basic application which allows the user to see the current weather in cities all around th world.
 

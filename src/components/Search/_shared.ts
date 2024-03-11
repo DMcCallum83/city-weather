@@ -19,4 +19,5 @@ export interface SearchResult {
     windDegrees: string;
     condition: string;
     conditionIcon: string;
+    humidity: string;
   }

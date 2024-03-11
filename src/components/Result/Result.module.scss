@@ -33,7 +33,7 @@
 
 .layout {
     display: grid;
-    grid-template-areas: 'location condition' 'temp temp' 'wind wind';
+    grid-template-areas: 'location condition' 'temp temp' 'wind wind' 'humidity humidity';
     gap: 1rem;
 }
 
@@ -68,7 +68,12 @@
     @include box-shadow;
 }
 
-.tempLayout, .windLayout {
+.humidity {
+    grid-area: humidity;
+    @include box-shadow;
+}
+
+.tempLayout, .windLayout, .humidityLayout {
     @include sub-section-layout;
 }
 

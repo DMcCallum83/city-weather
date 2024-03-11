@@ -38,6 +38,7 @@ export function Result({ cityId }: ResultProps) {
           windDegrees: data.current["wind_degree"],
           condition: data.current.condition.text,
           conditionIcon: data.current.condition.icon,
+          humidity: data.current.humidity,
         } as CityResult;
 
         setCityResult(result);
@@ -99,6 +100,12 @@ export function Result({ cityId }: ResultProps) {
               {cityResult.windDirection} ({cityResult.windDegrees}&deg;)
             </span>
           </div>
+        </div>
+      </div>
+      <div className={styles.humidity}>
+        <h2 className={styles.heading}>Humidity</h2>
+        <div className={styles.humidityLayout}>
+          <span className={styles.textLarge}>{cityResult.humidity}%</span>
         </div>
       </div>
     </section>
