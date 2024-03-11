@@ -68,6 +68,7 @@ export function Result({ cityId }: ResultProps) {
           <div className={styles.conditionLayout}>
             <span>{cityResult.condition} </span>
             <Image
+              priority
               src={`https:${cityResult.conditionIcon}`}
               alt={`${cityResult.condition} Icon`}
               width={75}
