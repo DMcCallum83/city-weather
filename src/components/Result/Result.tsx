@@ -42,7 +42,6 @@ export function Result({ cityId }: ResultProps) {
         } as CityResult;
 
         setCityResult(result);
-        console.log(result);
       } catch {
         //handled by state
       }

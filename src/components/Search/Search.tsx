@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import styles from "./Search.module.scss";
-import { SearchResult } from "./_shared";
 import { SearchResultItem } from "./SearchResultItem";
 import { LoadingSpinner } from "../LoadingSpinner";
+import { SearchResultModel } from "@/schemas/searchSchema";
 
 interface SearchProps {
   onSelect: (id: number | null) => void;
@@ -11,9 +11,9 @@ interface SearchProps {
 
 export function Search({ onSelect }: SearchProps) {
   const [searchValue, setSearchValue] = useState<string>("");
-  const [searchResults, setSearchResults] = useState<SearchResult[] | null>(
-    null
-  );
+  const [searchResults, setSearchResults] = useState<
+    SearchResultModel[] | null
+  >(null);
   const [isFetching, setIsFetching] = useState(false);
   const [fetchError, setFetchError] = useState<boolean>(false);
 
@@ -28,14 +28,16 @@ export function Search({ onSelect }: SearchProps) {
           setFetchError(true);
         }
 
-        const results = data.map((city: any) => {
-          return {
-            id: city.id,
-            name: city.name,
-            region: city.region,
-            country: city.country,
-          } as SearchResult;
-        });
+        const results: SearchResultModel[] = data.map(
+          (city: SearchResultModel) => {
+            return {
+              id: city.id,
+              name: city.name,
+              region: city.region,
+              country: city.country,
+            };
+          }
+        );
         setIsFetching(false);
         setSearchResults(results);
       } catch {

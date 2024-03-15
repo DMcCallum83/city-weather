@@ -1,9 +1,9 @@
-import { SearchResult } from "./_shared";
+import { SearchResultModel } from "@/schemas/searchSchema";
 import styles from "./SearchResultItem.module.scss";
 
 interface SearchResultProps {
   onSelect: (id: number, name: string) => void;
-  city: SearchResult;
+  city: SearchResultModel;
 }
 
 export function SearchResultItem({ city, onSelect }: SearchResultProps) {
