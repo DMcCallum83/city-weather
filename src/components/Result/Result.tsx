@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { CityResult } from "../Search/_shared";
-import styles from "./Result.module.scss";
-import Image from "next/image";
-import { convertToAMPM } from "./_helpers";
-import { LoadingSpinner } from "../LoadingSpinner";
+import { useEffect, useState } from 'react';
+import { CityResult } from '../Search/_shared';
+import styles from './Result.module.scss';
+import Image from 'next/image';
+import { convertToAMPM } from './_helpers';
+import { LoadingSpinner } from '../LoadingSpinner';
 
 interface ResultProps {
   cityId: number;
@@ -28,14 +28,14 @@ export function Result({ cityId }: ResultProps) {
           name: data.location.name,
           country: data.location.country,
           localtime: data.location.localtime,
-          tempC: data.current["temp_c"],
-          feelsLikeC: data.current["feelslike_c"],
-          tempF: data.current["temp_f"],
-          feelsLikeF: data.current["feelslike_f"],
-          windMph: data.current["wind_mph"],
-          windKph: data.current["wind_kph"],
-          windDirection: data.current["wind_dir"],
-          windDegrees: data.current["wind_degree"],
+          tempC: data.current['temp_c'],
+          feelsLikeC: data.current['feelslike_c'],
+          tempF: data.current['temp_f'],
+          feelsLikeF: data.current['feelslike_f'],
+          windMph: data.current['wind_mph'],
+          windKph: data.current['wind_kph'],
+          windDirection: data.current['wind_dir'],
+          windDegrees: data.current['wind_degree'],
           condition: data.current.condition.text,
           conditionIcon: data.current.condition.icon,
           humidity: data.current.humidity,
@@ -57,7 +57,7 @@ export function Result({ cityId }: ResultProps) {
   ) : cityResult ? (
     <section className={styles.result}>
       <div className={styles.layout}>
-        {!!cityResult.name && cityResult.name !== "null" && (
+        {!!cityResult.name && cityResult.name !== 'null' && (
           <div className={styles.location}>
             <span className={styles.textLarge}>{cityResult.name}</span>
             <span className={styles.textSmall}>{cityResult.country}</span>
@@ -83,7 +83,7 @@ export function Result({ cityId }: ResultProps) {
               {cityResult.tempC}&deg;C ({cityResult.tempF}&deg;F)
             </span>
             <span className={styles.textSmall}>
-              (feels like {cityResult.feelsLikeC}&deg;C /{" "}
+              (feels like {cityResult.feelsLikeC}&deg;C /{' '}
               {cityResult.feelsLikeF}
               &deg;F)
             </span>

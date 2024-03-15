@@ -1,5 +1,5 @@
-import { SearchResultModel } from "@/schemas/searchSchema";
-import styles from "./SearchResultItem.module.scss";
+import { SearchResultModel } from '@/schemas/searchSchema';
+import styles from './SearchResultItem.module.scss';
 
 interface SearchResultProps {
   onSelect: (id: number, name: string) => void;

@@ -1,16 +1,16 @@
-"use client";
-import { useEffect, useState } from "react";
-import styles from "./Search.module.scss";
-import { SearchResultItem } from "./SearchResultItem";
-import { LoadingSpinner } from "../LoadingSpinner";
-import { SearchResultModel } from "@/schemas/searchSchema";
+'use client';
+import { useEffect, useState } from 'react';
+import styles from './Search.module.scss';
+import { SearchResultItem } from './SearchResultItem';
+import { LoadingSpinner } from '../LoadingSpinner';
+import { SearchResultModel } from '@/schemas/searchSchema';
 
 interface SearchProps {
   onSelect: (id: number | null) => void;
 }
 
 export function Search({ onSelect }: SearchProps) {
-  const [searchValue, setSearchValue] = useState<string>("");
+  const [searchValue, setSearchValue] = useState<string>('');
   const [searchResults, setSearchResults] = useState<
     SearchResultModel[] | null
   >(null);
@@ -46,7 +46,7 @@ export function Search({ onSelect }: SearchProps) {
     };
 
     const debounceTimer = setTimeout(() => {
-      if (searchValue.trim() !== "") {
+      if (searchValue.trim() !== '') {
         setIsFetching(true);
         searchData();
       }
@@ -85,8 +85,8 @@ export function Search({ onSelect }: SearchProps) {
       {!!searchResults ? (
         <>
           <span className={styles.count}>
-            {searchResults.length}{" "}
-            {searchResults.length === 1 ? "result" : "results"}
+            {searchResults.length}{' '}
+            {searchResults.length === 1 ? 'result' : 'results'}
           </span>
           {searchResults.map((city) => (
             <SearchResultItem
