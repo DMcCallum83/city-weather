@@ -1,100 +1,99 @@
 @mixin box-shadow {
-    box-shadow: 0 1px 10px 2px rgba(90,90,90,0.1);
-    border-radius: 10px;
-    contain: paint;
+  box-shadow: 0 1px 10px 2px rgba(90, 90, 90, 0.1);
+  border-radius: 10px;
+  contain: paint;
 }
 
 @mixin sub-section-layout {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
-    padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+  padding: 1rem;
 }
 
 @mixin flex-column {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .error {
-    color: red;
-    font-size: 0.75rem;
-  }
+  color: red;
+  font-size: 0.75rem;
+}
 
 .result {
-    @include box-shadow;
-    width: 100%;
-    max-width: 500px;
-    padding: 1.5rem 1.5rem;
-    margin-top: 1rem;
-    font-size: 0.75rem;
+  @include box-shadow;
+  width: 100%;
+  max-width: 500px;
+  padding: 1.5rem 1.5rem;
+  margin-top: 1rem;
+  font-size: 0.75rem;
 }
 
 .layout {
-    display: grid;
-    grid-template-areas: 'location condition' 'temp temp' 'wind wind' 'humidity humidity';
-    gap: 1rem;
+  display: grid;
+  grid-template-areas: 'location condition' 'temp temp' 'wind wind' 'humidity humidity';
+  gap: 1rem;
 }
 
 .location {
-    @include flex-column;
-    grid-area: location;
-    align-items: flex-start;
-    
-    span:last-of-type{
-        margin-top: 0.5rem;
-    }
+  @include flex-column;
+  grid-area: location;
+  align-items: flex-start;
+
+  span:last-of-type {
+    margin-top: 0.5rem;
+  }
 }
 
 .condition {
-    grid-area: condition;
-    display: flex;
-    justify-content: flex-end;
+  grid-area: condition;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .conditionLayout {
-    @include flex-column;
-    align-items: center;
+  @include flex-column;
+  align-items: center;
 }
 
 .temp {
-    grid-area: temp;
-    @include box-shadow;
+  grid-area: temp;
+  @include box-shadow;
 }
 
 .wind {
-    grid-area: wind;
-    @include box-shadow;
+  grid-area: wind;
+  @include box-shadow;
 }
 
 .humidity {
-    grid-area: humidity;
-    @include box-shadow;
+  grid-area: humidity;
+  @include box-shadow;
 }
 
-.tempLayout, .windLayout, .humidityLayout {
-    @include sub-section-layout;
+.tempLayout,
+.windLayout,
+.humidityLayout {
+  @include sub-section-layout;
 }
-
-
 
 .heading {
-    font-size: 1rem;
-    font-weight: 500;
-    text-align: center;
-    background: #474747;
-    color: white;
-    padding: 0.25rem;
-    margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  background: #474747;
+  color: white;
+  padding: 0.25rem;
+  margin: 0;
 }
 
 .textLarge {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 .textSmall {
-    font-size: 0.875rem;
-    font-weight: 400;
+  font-size: 0.875rem;
+  font-weight: 400;
 }
-

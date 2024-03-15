@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import styles from "./page.module.scss";
-import { Search } from "@/components/Search/Search";
-import { Result } from "@/components/Result/Result";
+import { useState } from 'react';
+import styles from './page.module.scss';
+import { Search } from '@/components/Search/Search';
+import { Result } from '@/components/Result/Result';
 
 export default function Home() {
   const [cityId, setCityId] = useState<number | null>(null);
