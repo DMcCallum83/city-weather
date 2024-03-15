@@ -1,4 +1,6 @@
 import fetch from 'node-fetch';
+import {SearchResultSchema} from '../../schemas/searchSchema';
+import { z } from 'zod';
 
 export default async function handler(req, res) {
     const { query } = req.query;
@@ -8,9 +10,10 @@ export default async function handler(req, res) {
   
     try {
       const apiResponse = await fetch(fetchUrl);
-      const data = await apiResponse.json();
+      const json = await apiResponse.json();
+      const results = z.array(SearchResultSchema).parse(json);
   
-      res.status(200).json(data);
+      res.status(200).json(results);
     } catch (error) {
       console.error('Error fetching data:', error);
       res.status(500).json({ error: 'Internal Server Error' });
